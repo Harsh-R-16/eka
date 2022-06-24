@@ -4,8 +4,7 @@ export default function Div({ text }) {
   const [state, setState] = React.useState({
     letter: "-",
     boolean: false,
-    text: "slate-500",
-    bg: "slate-200",
+    clc: "grey",
   });
   const [showDropdown, setShowDropDown] = React.useState(false);
   const [inp, setInp] = React.useState("");
@@ -15,6 +14,7 @@ export default function Div({ text }) {
       setState({
         letter: "Y",
         boolean: true,
+        clc: "green",
         text: "green-700",
         bg: "green-100",
       });
@@ -22,6 +22,7 @@ export default function Div({ text }) {
       setState({
         letter: "N",
         boolean: false,
+        clc: "red",
         text: "red-700",
         bg: "red-100",
       });
@@ -29,8 +30,7 @@ export default function Div({ text }) {
       setState({
         letter: "-",
         boolean: false,
-        text: "slate-500",
-        bg: "slate-200",
+        clc: "grey",
       });
     }
   };
@@ -44,7 +44,7 @@ export default function Div({ text }) {
     <div class="p-2 lg:w-1/3 md:w-1/2 w-full cursor-pointer mb-2">
       <div class="h-full flex items-center border p-4 rounded-lg">
         <span
-          className={`bg-${state.bg} text-${state.text} font-bold flex items-center justify-center mr-3 rounded-full h-11 w-11`}
+          className={`${state.clc} font-bold flex items-center justify-center mr-3 rounded-full h-11 w-11`}
           onClick={spanHandler}
         >
           {state.letter}
