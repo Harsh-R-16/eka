@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .sort-icon {
+    @apply w-3 translate-x-[2px] translate-y-[.5px];
+  }
+}
