@@ -55,7 +55,11 @@ export default function Section({ type }) {
               index={index}
             />
           ))}
-        <div className="relative border my-4 flex items-center p-2 px-4 rounded-md">
+        <div
+          className="relative border my-4 flex items-center p-2 px-4 rounded-md"
+          onMouseEnter={() => setShowDropDown(true)}
+          onMouseLeave={() => setShowDropDown(false)}
+        >
           <AiOutlineSearch />
           <input
             type="text"
@@ -63,8 +67,6 @@ export default function Section({ type }) {
             placeholder="Search here"
             value={inp}
             onChange={(e) => setInp(e.target.value)}
-            onMouseEnter={() => setShowDropDown(true)}
-            onMouseLeave={() => setShowDropDown(false)}
           />
           <button
             className="font-medium text-slate-700"
