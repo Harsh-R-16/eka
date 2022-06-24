@@ -6,6 +6,20 @@ import { types } from "./data";
 import { Link } from "react-router-dom";
 
 export default function Modal() {
+  const [inp, setInp] = React.useState("");
+  const [data, setData] = React.useState(types);
+
+  const deleteHandler = (e) => {
+    let newData = [...data];
+    newData.splice(+e.target.id, 1);
+    setData(newData);
+  };
+
+  const submitHandler = (e) => {
+    inp.trim() && setData([...data, inp.toUpperCase()]);
+    setInp("");
+  };
+
   return (
     <main className="bg-slate-50 min-h-screen relative p-4">
       <h1 className="flex items-center font-bold">
@@ -42,8 +56,12 @@ export default function Modal() {
             type="text"
             className="flex-1 mx-2 focus:outline-none"
             placeholder="Search here"
+            value={inp}
+            onChange={(e) => setInp(e.target.value)}
           />
-          <button className="font-bold text-red-900">Submit</button>
+          <button className="font-bold text-red-900" onClick={submitHandler}>
+            Submit
+          </button>
         </div>
       </section>
       <section className="border-2 p-4">
@@ -51,13 +69,19 @@ export default function Modal() {
           selected quick links
         </h2>
         <div className="flex items-center justify-evenly flex-wrap">
-          {types.map((i, index) => (
+          {data.map((i, index) => (
             <p
               key={index}
               className="flex items-center p-2 px-4 bg-slate-200 rounded-full m-4"
             >
               <span className="mr-2">{i}</span>
-              <MdDelete />
+              <span
+                id={index}
+                onClick={deleteHandler}
+                className="cursor-pointer"
+              >
+                <MdDelete />
+              </span>
             </p>
           ))}
         </div>
