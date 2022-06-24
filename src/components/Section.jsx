@@ -22,6 +22,12 @@ export default function Section({ type }) {
     setInp("");
   };
 
+  const deleteHandler = (e) => {
+    let newData = [...data];
+    newData.splice(+e.target.id, 1);
+    setData(newData);
+  };
+
   return (
     <section className="p-5 border">
       <div>
@@ -76,7 +82,10 @@ export default function Section({ type }) {
                 </datalist>
               </p>
               <p className="w-1/4 border  flex items-center p-4 font-bold capitalize">
-                <AiFillDelete /> <span className="ml-4">This is Remarks</span>
+                <span id={index} onClick={deleteHandler}>
+                  <AiFillDelete />
+                </span>
+                <span className="ml-4">This is Remarks</span>
               </p>
             </div>
           ))}
